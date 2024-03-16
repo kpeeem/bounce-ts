@@ -1,0 +1,15 @@
+import { Game } from './game.ts';
+
+let game: Game = new Game('gameArea', { width: 640, height: 360 });
+
+window.addEventListener('keydown', (e: KeyboardEvent) => {
+  if (e.keyCode === 32 && game.gameOver) {
+    const parentElement = document.getElementById(game.containerId);
+    if (parentElement) {
+      while (parentElement.firstChild) {
+        parentElement.removeChild(parentElement.firstChild);
+      }
+      game = new Game('gameArea', { width: 640, height: 360 });
+    }
+  }
+});
